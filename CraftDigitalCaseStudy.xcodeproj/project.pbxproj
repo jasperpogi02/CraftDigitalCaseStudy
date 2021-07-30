@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -101,7 +101,6 @@
 				6662B3776BA59BD2AEFE2E70 /* Pods-CraftDigitalCaseStudyTests.debug.xcconfig */,
 				97A38B503421042371253605 /* Pods-CraftDigitalCaseStudyTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -181,6 +180,7 @@
 				DFAA5AB626B43102004C9021 /* Frameworks */,
 				DFAA5AB726B43102004C9021 /* Resources */,
 				D0DB70B90C832FF403849541 /* [CP] Embed Pods Frameworks */,
+				DF29E96F26B4632900BF3C9D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -355,6 +355,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CraftDigitalCaseStudy/Pods-CraftDigitalCaseStudy-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		DF29E96F26B4632900BF3C9D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 		E5D8D287381A0F79C8D54F88 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
