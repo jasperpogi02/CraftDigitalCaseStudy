@@ -3,22 +3,20 @@ disabled_rules: # rule identifiers turned on by default to exclude from running
   - colon
   - comma
   - control_statement
-opt_in_rules: # some rules are turned off by default, so you need to opt-in
-  - empty_count # Find all the available rules by running: `swiftlint rules`
+  - multiple_closures_with_trailing_closure
+  - trailing_whitespace
 
-# Alternatively, specify all rules explicitly by uncommenting this option:
-# only_rules: # delete `disabled_rules` & `opt_in_rules` if using this
-#   - empty_parameters
-#   - vertical_whitespace
+opt_in_rules:
+- empty_count
+- empty_string
 
-included: # paths to include during linting. `--path` is ignored if present.
-  - Source
+#included: # paths to include during linting. `--path` is ignored if present.
+#  - Source
+
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Carthage
   - Pods
-  - Source/ExcludedFolder
-  - Source/ExcludedFile.swift
-  - Source/*/ExcludedFile.swift # Exclude files with a wildcard
+  
 analyzer_rules: # Rules run by `swiftlint analyze` (experimental)
   - explicit_self
 
@@ -29,29 +27,51 @@ force_try:
   severity: warning # explicitly
 # rules that have both warning and error levels, can set just the warning level
 # implicitly
-line_length: 110
-# they can set both implicitly with an array
+
+line_length:
+    warning: 150
+    error: 200
+    ignores_function_declarations: true
+    ignores_comments: true
+    ignores_urls: true
+
+function_body_length:
+    warning: 300
+    error: 500
+
+function_parameter_count:
+    warning: 6
+    error: 8
+
 type_body_length:
-  - 300 # warning
-  - 400 # error
-# or they can set both explicitly
+    warning: 300
+    error: 500
+
 file_length:
-  warning: 500
-  error: 1200
+    warning: 500
+    error: 1200
+    ignore_comment_only_lines: true
+
+cyclomatic_complexity:
+    warning: 20
+    error: 25
+
 # naming rules can set warnings/errors for min_length and max_length
 # additionally they can set excluded names
 type_name:
-  min_length: 4 # only warning
+  min_length: 1 # only warning
   max_length: # warning and error
     warning: 40
     error: 50
   excluded: iPhone # excluded via string
   allowed_symbols: ["_"] # these are allowed in type names
+
 identifier_name:
-  min_length: # only min_length
-    error: 4 # only error
+  min_length: 1 # only min_length
   excluded: # excluded via string array
     - id
     - URL
     - GlobalAPIKey
-reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, codeclimate, junit, html, emoji, sonarqube, markdown, github-actions-logging)
+
+
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji, sonarqube, markdown)
