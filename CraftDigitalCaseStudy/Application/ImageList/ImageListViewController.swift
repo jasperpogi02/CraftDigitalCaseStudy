@@ -13,6 +13,10 @@ class ImageListViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var imageListSearchBar: UISearchBar!
     
+    lazy var viewModel: ImageListViewModel = {
+        return ImageListViewModel()
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -35,7 +39,8 @@ extension ImageListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageCellIdentifier", for: indexPath) as? ImageListTableViewCell else { fatalError() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "imageCellIdentifier",
+                                                       for: indexPath) as? ImageListTableViewCell else { fatalError() }
         cell.myImageView.image = #imageLiteral(resourceName: "placeholder")
         return cell
     }
