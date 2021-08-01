@@ -10,23 +10,42 @@ import Foundation
 class ImageListViewModel {
     
     let apiService: APIServiceProtocol
-    var isLoading = false
-    var images: [Images]?
     var imageRequestData = ImageRequest()
+    var images: [Images]? = [Images]() {
+        didSet {
+            self.reloadTableViewClosure?()
+        }
+    }
+    
+    var isLoading: Bool = false {
+        didSet {
+            self.updateLoadingStatus?()
+        }
+    }
+    
+    var alertMessage: String? {
+        didSet {
+            self.showAlertClosure?()
+        }
+    }
+    
+    var reloadTableViewClosure: (() -> Void)?
+    var showAlertClosure: (() -> Void)?
+    var updateLoadingStatus: (() -> Void)?
     
     init(apiService: APIServiceProtocol = APIService()) {
         self.apiService = apiService
     }
     
-    func fetchImages(completion: @escaping () -> Void) {
+    func fetchImages() {
         self.isLoading = true
         apiService.fetchImages(parameters: imageRequestData) { [weak self] (images, error) in
+            self?.isLoading = false
             if let error = error {
-                print(error.localizedDescription)
+                self?.alertMessage = error.localizedDescription
             } else {
                 if let images = images?.images {
                     self?.images = images
-                    completion()
                 }
             }
             

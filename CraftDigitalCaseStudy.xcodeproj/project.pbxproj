@@ -20,7 +20,7 @@
 		DFAA5AC426B43102004C9021 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFAA5AC226B43102004C9021 /* Main.storyboard */; };
 		DFAA5AC626B43103004C9021 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DFAA5AC526B43103004C9021 /* Assets.xcassets */; };
 		DFAA5AC926B43103004C9021 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFAA5AC726B43103004C9021 /* LaunchScreen.storyboard */; };
-		DFAA5AD426B43103004C9021 /* CraftDigitalCaseStudyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAA5AD326B43103004C9021 /* CraftDigitalCaseStudyTests.swift */; };
+		DFAA5AD426B43103004C9021 /* ImageListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAA5AD326B43103004C9021 /* ImageListViewModelTests.swift */; };
 		DFAA5ADF26B43103004C9021 /* CraftDigitalCaseStudyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFAA5ADE26B43103004C9021 /* CraftDigitalCaseStudyUITests.swift */; };
 		DFB313D126B6DACA0049267A /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB313D026B6DACA0049267A /* ImageDetailViewController.swift */; };
 		DFB313D326B6DB4C0049267A /* ImageDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB313D226B6DB4C0049267A /* ImageDetailViewModel.swift */; };
@@ -64,7 +64,7 @@
 		DFAA5AC826B43103004C9021 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DFAA5ACA26B43103004C9021 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFAA5ACF26B43103004C9021 /* CraftDigitalCaseStudyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CraftDigitalCaseStudyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DFAA5AD326B43103004C9021 /* CraftDigitalCaseStudyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftDigitalCaseStudyTests.swift; sourceTree = "<group>"; };
+		DFAA5AD326B43103004C9021 /* ImageListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewModelTests.swift; sourceTree = "<group>"; };
 		DFAA5AD526B43103004C9021 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFAA5ADA26B43103004C9021 /* CraftDigitalCaseStudyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CraftDigitalCaseStudyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFAA5ADE26B43103004C9021 /* CraftDigitalCaseStudyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftDigitalCaseStudyUITests.swift; sourceTree = "<group>"; };
@@ -210,7 +210,7 @@
 		DFAA5AD226B43103004C9021 /* CraftDigitalCaseStudyTests */ = {
 			isa = PBXGroup;
 			children = (
-				DFAA5AD326B43103004C9021 /* CraftDigitalCaseStudyTests.swift */,
+				DFAA5AD326B43103004C9021 /* ImageListViewModelTests.swift */,
 				DFAA5AD526B43103004C9021 /* Info.plist */,
 			);
 			path = CraftDigitalCaseStudyTests;
@@ -506,7 +506,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFAA5AD426B43103004C9021 /* CraftDigitalCaseStudyTests.swift in Sources */,
+				DFAA5AD426B43103004C9021 /* ImageListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
