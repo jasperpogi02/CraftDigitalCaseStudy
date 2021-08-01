@@ -60,6 +60,14 @@ extension ImageListViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let imageDetailVC = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(identifier: "ImageDetailViewController") as? ImageDetailViewController {
+            imageDetailVC.viewModel.imageDetail = viewModel.images?[indexPath.row]
+            self.navigationController?.pushViewController(imageDetailVC, animated: true)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200.0
     }
@@ -86,8 +94,8 @@ extension ImageListViewController: UISearchBarDelegate {
 
 extension ImageListViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-      let hasReachedEnd = scrollView.contentOffset.y >= 0
-          && scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)
+        let hasReachedEnd = scrollView.contentOffset.y >= 0
+            && scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)
         if hasReachedEnd {
             guard viewModel.isLoading == false else { return }
             viewModel.imageRequestData.pageSize += 10

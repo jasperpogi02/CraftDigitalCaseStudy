@@ -99,6 +99,35 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="123.88392857142857"/>
         </scene>
+        <!--Image Detail View Controller-->
+        <scene sceneID="zJZ-p5-Gv4">
+            <objects>
+                <viewController restorationIdentifier="ImageDetailViewController" storyboardIdentifier="ImageDetailViewController" id="Yfi-et-sbE" customClass="ImageDetailViewController" customModule="CraftDigitalCaseStudy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o1x-nn-HgM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bNY-71-aqf">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BV4-jJ-jXG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BV4-jJ-jXG" firstAttribute="bottom" secondItem="bNY-71-aqf" secondAttribute="bottom" id="8Kp-0q-BA8"/>
+                            <constraint firstItem="bNY-71-aqf" firstAttribute="leading" secondItem="BV4-jJ-jXG" secondAttribute="leading" id="8h1-7d-DhJ"/>
+                            <constraint firstItem="BV4-jJ-jXG" firstAttribute="trailing" secondItem="bNY-71-aqf" secondAttribute="trailing" id="DT5-L4-Rze"/>
+                            <constraint firstItem="bNY-71-aqf" firstAttribute="top" secondItem="BV4-jJ-jXG" secondAttribute="top" id="T3Q-pJ-bwP"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageDetailView" destination="bNY-71-aqf" id="3Le-AG-8E6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iFI-jZ-4by" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2026" y="124"/>
+        </scene>
     </scenes>
     <resources>
         <image name="placeholder" width="900" height="497"/>
