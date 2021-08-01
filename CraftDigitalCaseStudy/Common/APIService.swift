@@ -9,11 +9,11 @@ import Foundation
 import Alamofire
 
 protocol APIServiceProtocol {
-    func fetchImages(complete: @escaping( _ success: Bool, _ images: [Image], _ error: Error) -> Void)
+    func fetchImages(parameters: ImageRequest, complete: @escaping(_ images: ImageResponse?, _ error: Error?) -> Void)
 }
 
 class APIService: APIServiceProtocol {
-
+    
     static let sharedInstance = APIService()
     
     enum Router: URLConvertible {
@@ -52,7 +52,29 @@ class APIService: APIServiceProtocol {
         
     }
     
-    func fetchImages(complete: @escaping (Bool, [Image], Error) -> Void) {
-        
+    func fetchImages(parameters: ImageRequest, complete: @escaping(_ images: ImageResponse?, _ error: Error?) -> Void) {
+        let jsonEncoder = JSONEncoder()
+        do {
+            let jsonData = try jsonEncoder.encode(parameters)
+            guard let jsonDict = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] else { return }
+            let headers = [
+                "x-rapidapi-key": Constants.rapidApiKey,
+                "x-rapidapi-host": Constants.rapidApiHost
+            ]
+            defaultManager.request(APIService.Router.settings,
+                                   method: .get,
+                                   parameters: jsonDict,
+                                   encoding: URLEncoding.default,
+                                   headers: HTTPHeaders(headers)).responseDecodable(of: ImageResponse.self) { response in
+                                    switch response.result {
+                                    case .success(let data):
+                                        complete(data, nil )
+                                    case .failure(let error):
+                                        complete(nil, error)
+                                    }
+                                   }
+        } catch(let error) {
+            print(error.localizedDescription)
+        }
     }
 }
