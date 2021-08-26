@@ -21,6 +21,7 @@ class ImageListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupBinding()
     }
     
     private func setupView() {
@@ -28,15 +29,37 @@ class ImageListViewController: UIViewController {
         activityIndicator.stopAnimating()
     }
     
-    fileprivate func fetchImages() {
-        self.activityIndicator.startAnimating()
-        viewModel.fetchImages { [weak self] in
+    private func setupBinding() {
+        viewModel.showAlertClosure = { [weak self] () in
             DispatchQueue.main.async {
-                self?.activityIndicator.stopAnimating()
-                self?.viewModel.isLoading = false
+                if let message = self?.viewModel.alertMessage {
+                    self?.showAlert( message )
+                }
+            }
+        }
+        
+        viewModel.updateLoadingStatus = { [weak self] () in
+            DispatchQueue.main.async {
+                let isLoading = self?.viewModel.isLoading ?? false
+                if isLoading {
+                    self?.activityIndicator.startAnimating()
+                } else {
+                    self?.activityIndicator.stopAnimating()
+                }
+            }
+        }
+        
+        viewModel.reloadTableViewClosure = { [weak self] () in
+            DispatchQueue.main.async {
                 self?.imageListTableView.reloadData()
             }
         }
+    }
+    
+    func showAlert( _ message: String ) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction( UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
 }
@@ -81,7 +104,7 @@ extension ImageListViewController: UISearchBarDelegate {
         if let keyword = searchBar.text {
             guard keyword.isEmpty == false else { return }
             viewModel.imageRequestData.q = keyword
-            fetchImages()
+            viewModel.fetchImages()
         }
     }
     
@@ -99,7 +122,7 @@ extension ImageListViewController: UIScrollViewDelegate {
         if hasReachedEnd {
             guard viewModel.isLoading == false else { return }
             viewModel.imageRequestData.pageSize += 10
-            fetchImages()
+            viewModel.fetchImages()
         }
     }
 }
